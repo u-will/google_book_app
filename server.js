@@ -4,8 +4,8 @@ const pg = require('pg');
 const dotenv = require('dotenv');
 const express = require('express');
 const app = express();
-const PORT = process.env.PORT || 3000;
 dotenv.config();
+const PORT = process.env.PORT || 3000;
 // const client = new pg.Client(DATABASE_URL);
 
 app.set('view engine', 'ejs');
@@ -18,6 +18,10 @@ app.use(express.urlencoded({ extended: true }));
 
 app.get('/hello', (req, res) => {
   res.render('pages/index');
+});
+
+app.get('/', (req,res)=>{
+  res.render('pages/searches/new');
 });
 
 app.listen(PORT, () => {
